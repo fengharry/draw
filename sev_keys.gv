@@ -1,0 +1,21 @@
+digraph keys
+{
+	node[shape = box];
+
+	ASK -> CEK[label = "root of trust"];
+	CEK -> PEK -> PDH;
+	ASK[label = "AMD Signing Key \n ASK"; style = filled];
+	CEK[label = "Chip Endorsement Key \n CEK"];
+	PEK[label = "Platform Endorsement Key \n PEK", color = red];
+	PDH[label = "Platform Diffie-Hellman Key \n PDH"];
+
+	CA -> PEK[label = "root of trust"];
+	CA[label = "Certificate Authority \n CA"; style = filled];
+
+	{rank = same; ASK; CA}
+
+	PDH -> TIK; TIK[label = "Transport Integrity Key \n TIK"];
+	PDH -> TEK; TEK[label = "Transport Encryption Key \n TEK"];
+	PDH -> LMK; LMK[label = "Launch Measurement Key \n LMK"]
+	PDH -> VEK; VEK[label = "VM Encryption Key \n VEK"];
+}

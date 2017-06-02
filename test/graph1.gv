@@ -1,0 +1,17 @@
+digraph G
+{
+	// 1st level
+	main[shape = box];
+	main->parse; 
+	main->init[style = dotted]; // dotted line
+	main->cleanup;
+	main->print[color = red, style = bold, label = "100 times"]; // line label
+
+	// 2nd level
+	parse->execute;
+	init->make_string; make_string[label = "make a \n string"]; // node label
+
+	// 3rd level
+	execute->{make_string, print} // connect to nodes	
+	execute->compare; compare[shape = box, style = filled, color = yellow];
+}
