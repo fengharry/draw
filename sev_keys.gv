@@ -2,17 +2,19 @@ digraph keys
 {
 	node[shape = box];
 
-	ASK -> CEK[label = "root of trust"];
+	ASK -> CEK[label = " root of trust"; fontcolor = red];
 	CEK -> PEK -> PDH;
-	ASK[label = "AMD Signing Key \n ASK"; style = filled];
+	ASK[label = "AMD Signing Key \n ASK"; style=filled];
 	CEK[label = "Chip Endorsement Key \n CEK"];
 	PEK[label = "Platform Endorsement Key \n PEK", color = red];
 	PDH[label = "Platform Diffie-Hellman Key \n PDH"];
 
-	CA -> PEK[label = "root of trust"];
-	CA[label = "Certificate Authority \n CA"; style = filled];
+	root_CA -> CA[label = " root of trust"; fontcolor = red; style = dotted];
+	CA -> PEK;
+	root_CA[label = "root CA"; style = filled];
+	CA[label = "Certificate Authority \n CA"];
 
-	{rank = same; ASK; CA}
+	{rank = same; ASK; root_CA}
 
 	PDH -> TIK; TIK[label = "Transport Integrity Key \n TIK"];
 	PDH -> TEK; TEK[label = "Transport Encryption Key \n TEK"];
