@@ -1,19 +1,26 @@
 digraph memory_encryption
 {
-	node[shape = box];
-	edge[headport = w];
+	node[shape = box; width = 1.5];
 	rankdir = LR;
 
 	subgraph cluster0
 	{
 		label  = "memory controller"; margin = 20;
-		encryption_engine[label = "encryption engine"];
+		encryption_engine[label = "encryption engine"; height = 1];
 		
 	}
-	encryption_engine -> DRAM1[label = "VM1 key"];
-	encryption_engine -> DRAM2[label = "VM2 key"];
-	encryption_engine -> DRAM3[label = "VM3 key"];
+	
+	os1[label = "VM1 OS"];
+	os2[label = "VM2 OS"];
+	os3[label = "VM3 OS"];
 	DRAM1[label = "VM1 memory"];
 	DRAM2[label = "VM2 memory"];
 	DRAM3[label = "VM3 memory"];
+
+	os1 -> encryption_engine[color = red];
+	os2 -> encryption_engine[color = green];
+	os3 -> encryption_engine[color = blue];
+	encryption_engine -> DRAM1[label = "VM1 key"; color = red];
+	encryption_engine -> DRAM2[label = "VM2 key"; color = green];
+	encryption_engine -> DRAM3[label = "VM3 key"; color = blue];
 }

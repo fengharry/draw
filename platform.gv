@@ -1,0 +1,43 @@
+digraph sev{
+	node[shape = box; width = 2];
+	label = "SEV Enabled Platform\n "; labelloc = t;
+	ranksep = 0.5;
+	nodesep = 0.25;
+
+	init[label = "INIT"];
+	shutdown[label = "SHUTDOWN"];
+	status[label = "PLATFORM_STATUS"];	
+	reset[label = "FACTORY_RESET"];
+
+	init -> identity[style = invis];
+
+	{
+		rank = same;
+		identity[label = "Platform Identity"];
+		pek[label = "Platform Endorsement Key"];
+		pek_cert0[label = "PEK Certificate"];
+		identity -> pek -> pek_cert0[dir = back; minlen = 2];
+	}
+	
+	identity -> authenticity[style = invis];
+	
+	{
+		rank = same;
+		authenticity[label = "Device Authenticity"];
+		pek_cert1[label = "PEK Certificate"];
+		chip_key[label = "Chip-unique signing key"];
+		amd_key[label = "AMD signing key"];
+		authenticity -> pek_cert1 -> chip_key -> amd_key[dir = back; minlen = 2];
+	}
+	
+	authenticity -> ownership[style = invis];
+	
+	{
+		rank = same;
+		ownership[label = "Platform Ownership"];
+		pek_cert2[label = "PEK Certificate"];
+		root_cert[label = "Root Certificate"];
+		ownership -> pek_cert2 -> root_cert[dir = back; minlen = 2];
+	}
+
+}
