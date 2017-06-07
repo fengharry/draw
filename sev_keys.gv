@@ -16,8 +16,17 @@ digraph keys
 
 	{rank = same; ASK; root_CA}
 
-	PDH -> TIK; TIK[label = "Transport Integrity Key \n TIK"];
-	PDH -> TEK; TEK[label = "Transport Encryption Key \n TEK"];
-	PDH -> LMK; LMK[label = "Launch Measurement Key \n LMK"]
-	PDH -> VEK; VEK[label = "VM Encryption Key \n VEK"];
+	{
+	rank = same;
+	TIK[label = "Transport Integrity Key \n TIK"];
+	TEK[label = "Transport Encryption Key \n TEK"];
+	LMK[label = "Launch Measurement Key \n LMK"]
+	}
+	VEK[label = "VM Encryption Key \n VEK"];
+
+	PDH -> TIK; 
+	PDH -> TEK; 
+	PDH -> LMK; 
+
+	TEK -> VEK[style = invis];
 }
