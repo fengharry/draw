@@ -1,0 +1,28 @@
+digraph smp{
+	node[shape = box; fontsize = 18; width = 2];
+	label = "SMP boot\n "; fontsize = 28; labelloc = t;
+	ranksep = 0.5;
+
+	subgraph cluster0{
+		label = "BSP \n bootstrap processor"; fontsize = 20;
+		reset1[label = "RESET"];
+		bios1[label = "BSP BIOS"];	
+		kernel1[label = "Linux kernel"];
+
+		reset1 -> bios1 -> kernel1;
+	}
+
+	test1[width = 2.5; style = invis];
+
+	subgraph cluster1{
+		label = "AP \n application processor"; fontsize = 20;
+
+		reset2[label = "RESET"]; 
+		bios2[label = "AP BIOS"];
+		halt2[label = "HALT"];
+		kernel2[label = "Linux kernel"];
+
+		reset2 -> halt2 -> bios2 -> kernel2;
+	}
+
+}
