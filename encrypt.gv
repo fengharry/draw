@@ -1,7 +1,6 @@
-digraph smp{
-	node[shape = box; fontsize = 18; width = 3];
-	label = "Kernel encrypt\n "; fontsize = 28; labelloc = t;
-	ranksep = 0.5;
+digraph hello{
+	graph[label = "Kernel encrypt\n"];
+	node[width = 3];
 
 	vbf1[label = "Virtual Address"];
 	bf1[label = "Intermediate Buffer"];

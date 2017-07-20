@@ -1,7 +1,5 @@
-digraph keys
+digraph hello
 {
-	node[shape = box];
-
 	ASK -> CEK[label = " root of trust"; fontcolor = red];
 	CEK -> PEK -> PDH;
 	ASK[label = "AMD Signing Key \n ASK"; style=filled];
@@ -17,10 +15,10 @@ digraph keys
 	{rank = same; ASK; root_CA}
 
 	{
-	rank = same;
-	TIK[label = "Transport Integrity Key \n TIK"];
-	TEK[label = "Transport Encryption Key \n TEK"];
-	LMK[label = "Launch Measurement Key \n LMK"]
+		rank = same;
+		TIK[label = "Transport Integrity Key \n TIK"];
+		TEK[label = "Transport Encryption Key \n TEK"];
+		LMK[label = "Launch Measurement Key \n LMK"]
 	}
 	VEK[label = "VM Encryption Key \n VEK"];
 

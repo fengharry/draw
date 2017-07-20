@@ -1,7 +1,5 @@
-digraph cloud_owner{
-	node[shape = box];
-	label = "Cloud Computing\n "; labelloc = t;
-	ranksep = 0.25;
+digraph hello{
+	graph[label = "Cloud Computing\n"; ranksep = 0.25];
 
 	guest_os1[label = "Guest OS1"];
 	guest_os2[label = "Guest OS2"];

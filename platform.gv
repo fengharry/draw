@@ -1,8 +1,6 @@
-digraph sev{
-	node[shape = box; width = 2];
-	label = "SEV Enabled Platform\n "; labelloc = t;
-	ranksep = 0.5;
-	nodesep = 0.25;
+digraph hello{
+	graph[label = "SEV Enabled Platform\n"];
+	node[width = 2];
 
 	init[label = "INIT"];
 	shutdown[label = "SHUTDOWN"];

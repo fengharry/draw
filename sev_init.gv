@@ -1,0 +1,16 @@
+digraph hello{
+	init[label = "INIT \n ret = SUCCESS"];
+	state[label = "Uninitialized state"; shape = diamond];	
+	load[label = "Load persistent state"];
+	cek[label = "Generate CEK from chip unique values"];
+	ca_cert[label = "Generate self-signed CA Certificate"];
+	pek_cert[label = "Generate PEK Certificate signed by CA"];
+	pdh[label = "Generate PDH key signed by CEK and PEK"];
+	asid[label = "Invalidate all ASIDs"];
+	ret[label = "return ret"];
+
+	init -> state;
+	state -> load[label = " Y"];
+	load -> cek -> ca_cert -> pek_cert -> pdh -> asid -> ret;
+
+}

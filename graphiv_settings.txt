@@ -1,0 +1,2 @@
+graph[fontsize = 28; labelloc = t; rankdir = TB; ranksep = 0.5; nodesep = 0.25;]
+node[shape = box; fontname = "Times"; fontsize = 18; width = 4];

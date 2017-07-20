@@ -1,7 +1,7 @@
-digraph memory_encryption
+digraph hello
 {
-	node[shape = box; width = 1.5];
-	rankdir = LR;
+	graph[rankdir = LR];
+	node[width = 1.5;];
 
 	subgraph cluster0
 	{

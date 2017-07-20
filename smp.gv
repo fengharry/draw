@@ -1,7 +1,6 @@
-digraph smp{
-	node[shape = box; fontsize = 18; width = 2];
-	label = "SMP boot\n "; fontsize = 28; labelloc = t;
-	ranksep = 0.5;
+digraph hello{
+	graph[label = "SMP boot\n"]; 
+	node[width = 2];
 
 	subgraph cluster0{
 		label = "BSP \n bootstrap processor"; fontsize = 20;

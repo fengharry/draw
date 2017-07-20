@@ -1,8 +1,6 @@
-digraph sev{
-	node[shape = box; width = 2];
-	label = "SEV Enabled Guest\n "; labelloc = t;
-	ranksep = 0.25;
-	nodesep = 0.25;
+digraph hello{
+	graph[ranksep = 0.25; label = "SEV Enabled Guest\n"];
+	node[width = 2;];
 
 	{
 		rank = same;

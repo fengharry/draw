@@ -1,0 +1,16 @@
+digraph hello{
+	node[width = 6];
+
+	launch[label = "LAUNCH_FINISH \n ret = SUCCESS"];
+	state1[label = "platform in WORKING state?"; shape = diamond];	
+	state2[label = "guest in LSECRET state?"; shape = diamond];	
+	clear[label = "clear GCTX.TEK/GCTX.TIK/GCTX.MS/ \n GCTX.NONCE/GCTX.LD"];
+	set_state[label = "set guest in RUNNING state"];
+	ret[label = "return ret"];
+
+	launch -> state1;
+	state1 -> state2[label = " Y"];
+	state2 -> clear[label = " Y"];
+	clear -> set_state -> ret;
+
+}
