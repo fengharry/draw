@@ -1,0 +1,21 @@
+digraph hello
+{
+	graph[label = "\nKernel encrypt"];
+	node[shape = box; width = 3];
+
+	a1[label = "Virtual Address"];
+	a2[label = "Intermediate Buffer"];
+	a3[label = "Kernel Virtual Address1"];
+	a4[label = "Kernel Virtual Address2"];	
+	a5[label = "Kernel Physical Address1"];
+	a6[label = "Kernel Physical Address2"];
+	a7[label = "Kernel Physical Memory";];
+
+	a1 -> a2;
+	a3 -> a5; 
+	a4 -> a6;
+	
+	edge[fontcolor = red];
+	a5 -> a7[label = "C bit=0"];
+	a6 -> a7[label = "C bit=1"];
+}

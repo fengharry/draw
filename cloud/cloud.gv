@@ -1,0 +1,26 @@
+digraph hello
+{
+	graph[label = "\nCloud Computing";];
+	
+	node[width = 2];
+	a1[label = "Guest OS1"];
+	a2[label = "Guest OS2"];
+	a3[label = "Guest OS3"];	
+	a4[label = "Hypervisor"];
+	a5[label = "Platform Resource"];
+	
+	edge[dir = both];
+	a1 -> a4;
+	a2 -> a4;
+	a3 -> a4;
+	edge[dir = forward];
+	a4 -> a5;
+	
+	node[shape = box; style = filled];
+	a6[label = "Guest Owner"];
+	a7[label = "Platform Owner"];
+
+	edge[minlen = 4];
+	{rank = same; a3 -> a6;}	
+	{rank = same; a5 -> a7;}
+}

@@ -1,0 +1,66 @@
+digraph hello
+{
+	graph[label = "\nSEV Enabled Guest"];
+	node[shape = box; width = 2;];
+	edge[minlen = 1];
+
+	{
+		rank = same;
+		a1[label = "Launch"; color = red];
+		a2[label = "LAUNCH_START"];
+		a3[label = "LAUNCH_UPDATE"];
+		a4[label = "LAUNCH_FINISH"];
+		a2 -> a3 -> a4;
+	}
+	
+	a1 -> b1[style = invis];
+	
+	{
+		rank = same;
+		b1[label = "Execute"; color = red];
+		b2[label = "ACTIVATE"];
+		b3[label = "DEACTIVATE"];
+		b4[label = "DF_FLUSH"];
+		b2 -> b3 -> b4;
+	}
+	
+	b1 -> c1[style = invis];
+	
+	{
+		rank = same;
+		c1[label = "Migrate"; color = red];
+		c2[label = "SEND_START"];
+		c3[label = "SEND_UPDATE"];
+		c4[label = "SEND_FINISH"];
+		c2 -> c3 -> c4;
+	}
+	
+	c2 -> d1[style = invis];
+	
+	{
+		rank = same;
+		d1[label = "RECEIVE_START"];
+		d2[label = "RECEIVE_UPDATE"];
+		d3[label = "RECEIVE_FINISH"];
+		d1 -> d2 -> d3;
+	}
+	
+	c1 -> e1[style = invis; minlen = 2];
+	
+	{
+		rank = same;
+		e1[label = "Decommission"; color = red];
+		e2[label = "DECOMMISSION"];
+	}
+	
+	e1 -> f1[style = invis];
+	
+	{
+		rank = same;
+		f1[label = "Debug"; color = red];
+		f2[label = "DBG_ENCRYPT"];
+		f3[label = "DBG_DECRYPT"];
+		f2 -> f3[style = invis];
+	}
+
+}

@@ -1,0 +1,29 @@
+digraph hello
+{
+	node[shape = box; fontsize = 18; width = 4];
+
+	a1[label = "VM1 appid1 laddr1"];
+	a2[label = "system page table lookup"];
+	a3[label = "physical address"];	
+	a4[label = "physical page table lookup \n page.APPID=appid1 \n page.LADDR=laddr1"];
+	a5[label = "appid1 == page.APPID?"; shape = diamond];
+	a6[label = "laddr1 == page.LADDR?"; shape = diamond];
+	a7[label = "DDR"; style = filled; color = green];
+
+	a1 -> a2 -> a3 -> a4 -> a5;
+	a5 -> a6[label = " Y"];
+	a6 -> a7[label = " Y"];
+
+	b1[label = "VM3 appid3"; width = 3; style = invis];
+	
+	c1[label = "VM2 appid2"];
+	c2[label = "system page table lookup"];
+	c3[label = "physical address"];
+	c4[label = "physical page table lookup \n page.APPID=appid1"];
+	c5[label = "appid2 == page.APPID?"; shape = diamond];
+	c6[label = "Access Deny"; style = filled; color = red];
+
+	c1 -> c2 -> c3 -> c4 -> c5;
+	c5 -> c6[label = " N"];
+
+}
